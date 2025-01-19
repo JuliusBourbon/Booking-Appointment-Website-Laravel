@@ -1,0 +1,94 @@
+/* Global Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f9fc;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+.container {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.book-now-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.book-now-btn:hover {
+    background-color: #0056b3;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 35px;
+    border-radius: 5px;
+    width: 80%;
+    text-align: left;
+}
+
+.hidden {
+    display: none;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.next-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.next-btn:hover {
+    background-color: #218838;
+}
+
+.close-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.close-btn:hover {
+    background-color: #c82333;
+}
+
+#bookingResult {
+    margin-left: -50rem;
+}

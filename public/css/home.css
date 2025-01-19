@@ -1,0 +1,416 @@
+/* Global Styles */
+html {
+    scroll-behavior: smooth; 
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+input::placeholder{
+    font-family: 'Poppins', sans-serif;
+}
+
+textarea {
+    resize: none;
+}
+
+
+.slides-container {
+    display: flex;
+    flex-direction: column;
+    scroll-snap-type: y mandatory; 
+    width: 100vw;
+    height: 100vh;
+}
+
+.slide {
+    width: 100vw;
+    height: 100vh;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide p{
+    width: 1000px;
+}
+
+/* Slide-1 */
+.slide-1 {
+    position: relative; 
+    color: white;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; 
+}
+
+.logo img{
+    height: 10rem;
+}
+
+.slide-1::before {
+    content: ''; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(https://images.pexels.com/photos/751268/pexels-photo-751268.jpeg?auto=compress&cs=tinysrgb&w=600);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(5px); 
+    z-index: -1; 
+}
+
+header {
+    text-align: center;
+    padding: 20px;
+}
+
+.slide nav {
+    margin: 5rem 0;
+}
+
+.slide nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    border: 2px solid white;
+    color: white;
+    background: none;
+    padding: 7px 15px;
+    border-radius: 12px;
+}
+
+.content {
+    text-align: center;
+    padding: 10px;
+}
+
+.buttons {
+    margin-top: 20px;
+}
+
+.buttons a {
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.book-now {
+    background-color: white;
+    color: #286550;
+}
+
+.send-enquiry {
+    border: 2px solid white;
+    color: white;
+    background: none;
+}
+
+/* Slide-2 */
+.slide-2 {
+    background-color: #F4F4F4;
+    
+    color: #2F4F39;
+}
+
+.slide-2 p{
+    text-align: center;
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr)); /* Atur kolom berdasarkan lebar card */
+    gap: 20px; 
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    max-width: 20rem;
+}
+
+.card img {
+    width: 20rem;
+    max-height: 20rem;
+    object-fit: cover; 
+}
+
+.card h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin: 10px 0;
+}
+
+.card p {
+    font-size: 14px;
+    color: #555;
+    padding: 0 10px 10px;
+    line-height: 1.6;
+    width: 15rem;
+}
+
+
+/* Slide-3 */
+.slide-3 {
+    background: #ffedb7;
+    padding: 2rem 0rem; 
+    text-align: center; 
+    color: #286550;
+}
+
+.Map-Section {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem; 
+    margin: 0 auto; 
+    flex-wrap: wrap; 
+}
+
+.Map-Section h2 {
+    color: #286550;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.address{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.address p {
+    width: 20rem;
+    text-align: center;
+}
+
+.Map-Section .map {
+    width: 100%;
+    max-width: 600px; 
+    height: 30rem;
+    margin: 2rem 0;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsif Map */
+@media (max-width: 768px) {
+    .slide-3 p{
+        width: 27rem;
+    }
+
+    .Map-Section {
+        flex-direction: column; 
+    }
+
+    .Map-Section h2 {
+        margin-right: 0; 
+        font-size: 1.5rem; 
+    }
+
+    .address p {
+        width: 100%; 
+    }
+
+    .Map-Section .map {
+        width: 100%;
+        height: 20rem; 
+    }
+    
+    .slide nav {
+        margin: 1rem 0;
+    }
+    
+    .slide nav a {
+        color: white;
+        border: 2px solid white;
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+        background: none;
+        padding: 7px 3px;
+        border-radius: 12px;
+        margin: 0 0.2rem;
+    }
+
+    .content p{
+        text-align: center;
+        padding: 10px;
+        max-width: 27rem;
+    }
+
+    .slide-2 p{
+        text-align: center;
+        width: 27rem;
+    }
+
+    .card-container {
+        grid-template-columns: repeat(2, 1fr); /* Menampilkan 2 kolom */
+    }
+
+    .card {
+        max-width: 11rem;
+        max-height: 11rem;
+    }
+    
+    .card img {
+        width: 11rem;
+        max-height: 8rem;
+    }
+    
+    .card h3 {
+        font-size: 13px;
+        font-weight: bold;
+        width: 12rem;
+    }
+    
+    .card p {
+        opacity: 0;
+    }
+}
+
+/* Slide-4 */
+.slide-4 {
+    background-color: #286550;
+    color: #2F4F39;
+}
+
+.slide-4 h1, h2{
+    color: white;
+    text-align: center;
+}
+
+.review-card {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding: 20px 0;
+    max-width: 800px;
+}
+
+.Rating h2 {
+    font-size: 40px;
+    color: #ffc000;
+    margin: 0;
+}
+
+.review-text{
+    font-size: 16px;
+    line-height: 1.6;
+    color: #ffffff;
+    margin: 10px 0;
+    font-style: italic;
+    display: flex;
+    text-align: center;
+}
+
+.reviewer {
+    font-size: 20px;
+    color: #ffffff;
+    margin-top: 10px;
+    display: flex;
+    text-align: center;
+}   
+
+.reviewer p {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.reviewer a:hover {
+    text-decoration: underline;
+}
+
+.slider-indicators {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.indicator {
+    width: 40px;
+    height: 5px;
+    margin: 15px 5px;
+    background-color: #ccc;
+    border-radius: 15%;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+/* Slide-5 */
+.slide-5 {
+    /* background: linear-gradient(180deg,  #286550, #5AA482, #F4F4F4, #F4F4F4 ); */
+    background-color: #F4F4F4;
+    color: #2F4F39;
+}
+
+/* Contact Section */
+.contact-form {
+    background: white;
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form h2 {
+    color: #355e4b;
+    margin-bottom: 1rem;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form button {
+    width: 100%;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: transform 0.2s, box-shadow 0.3s ease-in-out;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #286550;
+    outline: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form button {
+    background-color: #286550;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #204d3a;
+}
+
