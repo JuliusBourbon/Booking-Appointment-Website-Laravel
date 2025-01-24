@@ -66,67 +66,45 @@ document.getElementById('homeBookNow').addEventListener('click', (e) => {
     openIframe();
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    const bookingForm = document.getElementById("bookingForm");
-    const resultModal = document.getElementById("bookingResult");
-    const resultTitle = document.getElementById("resultTitle");
-    const resultMessage = document.getElementById("resultMessage");
+document.addEventListener('DOMContentLoaded', function() {
+    // Menangani klik tombol Confirm
+    const bookingForm = document.getElementById('bookingForm');
+    const bookingResult = document.getElementById('bookingResult');
+    const resultTitle = document.getElementById('resultTitle');
+    const resultMessage = document.getElementById('resultMessage');
 
-    bookingForm.addEventListener("submit", function (event) {
-        event.preventDefault(); // Mencegah pengiriman form secara default
+    bookingForm.addEventListener('submit', function(event) {
+        event.preventDefault();  // Mencegah form untuk reload halaman
 
-        // Buat objek FormData dari form
+        // Menampilkan loading atau sementara saat pengiriman
+        bookingResult.classList.remove('hidden');
+        resultTitle.textContent = "Processing your booking...";
+        resultMessage.textContent = "Please wait a moment while we process your booking.";
+
+        // Kirim data booking menggunakan AJAX
         const formData = new FormData(bookingForm);
-
-        // Ambil URL endpoint dari atribut 'action' form
-        const url = bookingForm.getAttribute("action");
-
-        // Kirim permintaan menggunakan fetch
-        fetch(url, {
-            method: "POST",
+        
+        fetch(bookingForm.action, {
+            method: 'POST',
             body: formData,
-            headers: {
-                "X-CSRF-TOKEN": document.querySelector('input[name="_token"]').value,
-            },
         })
-            .then(function (response) {
-                // Periksa apakah respons berhasil
-                if (!response.ok) {
-                    throw new Error("Network response was not ok " + response.statusText);
-                }
-                return response.json();
-            })
-            .then(function (data) {
-                if (data.success) {
-                    // Tampilkan pesan sukses
-                    resultTitle.textContent = "Booking Successful!";
-                    resultMessage.textContent = data.message;
-
-                    // Refresh halaman setelah pemesanan berhasil
-                    setTimeout(function () {
-                        location.reload();  // Refresh halaman
-                    }, 3000); // Tunggu 2 detik sebelum me-refresh halaman
-                } else {
-                    // Tampilkan pesan gagal dari server
-                    resultTitle.textContent = "Booking Failed!";
-                    resultMessage.textContent = data.message;
-                }
-
-                // Sembunyikan form dan tampilkan modal hasil
-                bookingForm.classList.add("hidden");
-                resultModal.classList.remove("hidden");
-            })
-            .catch(function (error) {
-                // Tangani kesalahan atau error jaringan
-                console.error("Fetch error:", error);
-                resultTitle.textContent = "Error";
-                resultMessage.textContent = "Something went wrong. Please try again.";
-                resultModal.classList.remove("hidden");
-            });
+        .then(response => response.json())
+        .then(data => {
+            // Menampilkan hasil sukses jika data berhasil diproses
+            if (data.success) {
+                resultTitle.textContent = "Booking Successful!";
+                resultMessage.textContent = data.message;
+            } else {
+                resultTitle.textContent = "Booking Failed";
+                resultMessage.textContent = "There was an issue with your booking. Please try again.";
+            }
+        })
+        .catch(error => {
+            resultTitle.textContent = "Error!";
+            resultMessage.textContent = "Something went wrong. Please try again later.";
+        });
     });
 });
-
-
 
 document.addEventListener('DOMContentLoaded', () => {
     const reviews = document.querySelectorAll('.review-card');

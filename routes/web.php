@@ -54,3 +54,9 @@ Route::post('/contact', [EnquiryController::class, 'store'])->name('contact.stor
 
 Route::get('/bookings', [BookingController::class, 'create'])->name('bookings');
 Route::post('/bookings', [BookingController::class, 'store'])->name('bookings.store');
+
+
+// Mail Route
+Route::get('/bookings.store', function () {
+    return view('mail');
+});

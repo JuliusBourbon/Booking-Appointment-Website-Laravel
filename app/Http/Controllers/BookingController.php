@@ -6,8 +6,10 @@ use Carbon\Carbon;
 use App\Models\Room;
 use App\Models\Booking;
 use App\Models\RoomType;
+use App\Mail\BookingMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class BookingController extends Controller
 {
@@ -21,6 +23,8 @@ class BookingController extends Controller
 
     public function store(Request $request)
     {
+        // Log::info('Request reached store method');
+        // dd($request->all());
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email',
@@ -52,7 +56,7 @@ class BookingController extends Controller
         $Total_Price = $pricePerNight * $duration;
 
         // Simpan data booking ke dalam database
-        Booking::create([
+        $booking = Booking::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
@@ -67,10 +71,15 @@ class BookingController extends Controller
         // Ubah status room menjadi 'booked'
         $room->update(['status' => 'booked']);
 
-        return response()->json([
-            'success' => true,
-            'message' => 'Your booking has been successfully created!',
-        ]);
+        // Kirim email konfirmasi ke pengguna
+        Mail::to($booking->email)->send(new BookingMail($booking));
+
+        return redirect()->route('bookings')->with('success', 'Your booking has been successfully created! Check your email for more informations');
+
+        // return response()->json([
+        //     'success' => true,
+        //     'message' => 'Your booking has been successfully created! Check your email for more informations',
+        // ]);
         
     }
        

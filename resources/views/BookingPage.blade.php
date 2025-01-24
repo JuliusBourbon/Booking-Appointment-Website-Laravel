@@ -11,7 +11,6 @@
     <!-- Booking Modal -->
     <a id="homeBookNow" style="font-size: 1px">Book Now</a>
     <div id="bookingModal" class="modal">
-        <!-- Step 1: Booking Details -->
         <div id="step2" class="modal-content">
             <form id="bookingForm" action="{{ route('bookings.store') }}" method="POST">
                 @csrf
@@ -73,10 +72,37 @@
         <div id="bookingResult" class="modal-content hidden">
             <h2 id="resultTitle">Booking Result</h2>
             <p id="resultMessage"></p>
-            {{-- <button onclick="closeIframe()" class="close-btn">Close</button> --}}
         </div> 
     </div>
 
-    <script src=" {{ asset('js/home.js') }}"></script>
+    {{-- <script src=" {{ asset('js/home.js') }}"></script> --}}
+    <script>
+        @if(session('success'))
+            // Menampilkan modal dan mengisi pesan
+            document.getElementById('step2').classList.add('hidden');
+            document.getElementById('bookingResult').classList.remove('hidden');
+            document.getElementById('resultTitle').textContent = 'Success';
+            document.getElementById('resultMessage').textContent = '{{ session('success') }}';
+    
+            // Menyembunyikan modal setelah 5 detik (5000 ms)
+            setTimeout(function() {
+                document.getElementById('bookingResult').classList.add('hidden');
+                document.getElementById('step2').classList.remove('hidden');
+            }, 4000);
+        @elseif(session('error'))
+            // Menampilkan modal dan mengisi pesan error
+            document.getElementById('step2').classList.add('hidden');
+            document.getElementById('bookingResult').classList.remove('hidden');
+            document.getElementById('resultTitle').textContent = 'Error';
+            document.getElementById('resultMessage').textContent = '{{ session('error') }}';
+    
+            // Menyembunyikan modal setelah 5 detik (5000 ms)
+            setTimeout(function() {
+                document.getElementById('bookingResult').classList.add('hidden');
+                document.getElementById('step2').classList.remove('hidden');
+            }, 4000);
+        @endif
+    </script>
+    
 </body>
 </html>
