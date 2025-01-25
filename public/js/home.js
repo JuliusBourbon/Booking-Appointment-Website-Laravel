@@ -45,7 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-
 // Menampilkan popup dan overlay
 function openIframe() {
     // Mencegah halaman mengalihkan ke URL
@@ -64,46 +63,6 @@ function closeIframe() {
 document.getElementById('homeBookNow').addEventListener('click', (e) => {
     e.preventDefault(); // Mencegah aksi default
     openIframe();
-});
-
-document.addEventListener('DOMContentLoaded', function() {
-    // Menangani klik tombol Confirm
-    const bookingForm = document.getElementById('bookingForm');
-    const bookingResult = document.getElementById('bookingResult');
-    const resultTitle = document.getElementById('resultTitle');
-    const resultMessage = document.getElementById('resultMessage');
-
-    bookingForm.addEventListener('submit', function(event) {
-        event.preventDefault();  // Mencegah form untuk reload halaman
-
-        // Menampilkan loading atau sementara saat pengiriman
-        bookingResult.classList.remove('hidden');
-        resultTitle.textContent = "Processing your booking...";
-        resultMessage.textContent = "Please wait a moment while we process your booking.";
-
-        // Kirim data booking menggunakan AJAX
-        const formData = new FormData(bookingForm);
-        
-        fetch(bookingForm.action, {
-            method: 'POST',
-            body: formData,
-        })
-        .then(response => response.json())
-        .then(data => {
-            // Menampilkan hasil sukses jika data berhasil diproses
-            if (data.success) {
-                resultTitle.textContent = "Booking Successful!";
-                resultMessage.textContent = data.message;
-            } else {
-                resultTitle.textContent = "Booking Failed";
-                resultMessage.textContent = "There was an issue with your booking. Please try again.";
-            }
-        })
-        .catch(error => {
-            resultTitle.textContent = "Error!";
-            resultMessage.textContent = "Something went wrong. Please try again later.";
-        });
-    });
 });
 
 document.addEventListener('DOMContentLoaded', () => {

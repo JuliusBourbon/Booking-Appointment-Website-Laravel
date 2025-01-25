@@ -13,7 +13,6 @@
     <x-navbar></x-navbar>
     <x-layout><x-slot:title>{{ $title }}</x-slot:title></x-layout>
     
-    
     <div class="content">
         <h3>Make Yourself At Home</h3>
         <div class="desc">

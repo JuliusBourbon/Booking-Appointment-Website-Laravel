@@ -13,10 +13,53 @@ use Illuminate\Support\Facades\Mail;
 
 class BookingController extends Controller
 {
+    // Menampilkan halaman konfirmasi pembatalan
+    public function showCancelPage($id)
+    {
+        $booking = Booking::find($id);
+
+        if (!$booking) {
+            return view('CancelBooking', [
+                'title' => 'Cancel Booking', 
+                'success' => false,
+                'message' => 'Booking not found or already canceled!',
+                'booking' => null
+            ]);
+        }
+
+        return view('CancelBooking', [
+            'title' => 'Cancel Booking', 
+            'success' => true,
+            'message' => 'Are you sure you want to cancel this booking?',
+            'booking' => $booking
+        ]);
+    }
+
+     // Menangani permintaan pembatalan
+     public function deleteBooking(Request $request, $id)
+     {
+         $booking = Booking::find($id);
+ 
+         if (!$booking) {
+             return redirect()->route('CancelBooking', ['id' => $id])->withErrors('Booking not found or already canceled!');
+         }
+
+         // Cari room terkait berdasarkan roomid dari booking
+        $room = Room::find($booking->roomid);
+
+        if ($room) {
+            // Ubah status room menjadi "available"
+            $room->update(['status' => 'available']);
+        }
+ 
+         $booking->delete();
+ 
+         return redirect()->route('home')->with('success', 'Your booking has been successfully canceled.');
+     }
 
     public function create()
     {
-        // Mengambil room yang hanya berstatus "available"
+        // Mengambil room yang "available"
         $rooms = Room::where('status', 'available')->with('roomType')->get();
         return view('bookingpage', ['rooms' => $rooms]);
     }
@@ -37,7 +80,7 @@ class BookingController extends Controller
         ]);            
 
         // Ambil data room berdasarkan roomid
-        $room = Room::find($validated['roomid']);  // Cek room berdasarkan roomid
+        $room = Room::find($validated['roomid']);
         
         if (!$room->roomType) {
             return redirect()->back()->withErrors(['roomid' => 'Room type not found.']);
@@ -75,12 +118,6 @@ class BookingController extends Controller
         Mail::to($booking->email)->send(new BookingMail($booking));
 
         return redirect()->route('bookings')->with('success', 'Your booking has been successfully created! Check your email for more informations');
-
-        // return response()->json([
-        //     'success' => true,
-        //     'message' => 'Your booking has been successfully created! Check your email for more informations',
-        // ]);
-        
     }
        
 

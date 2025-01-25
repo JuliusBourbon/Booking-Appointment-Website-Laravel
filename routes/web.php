@@ -45,16 +45,11 @@ Route::get('/contact', function () {
 
 Route::post('/contact', [EnquiryController::class, 'store'])->name('contact.store');
 
-// Booking
-// Route::get('/bookings', function () {
-//     return view('bookingpage', ['title' => 'Booking Page']);
-// })->name('book');
-// Route::get('/book', [BookingController::class, 'create'])->name('book');
-// Route::post('/book', [BookingController::class, 'store'])->name('book.store');
-
 Route::get('/bookings', [BookingController::class, 'create'])->name('bookings');
 Route::post('/bookings', [BookingController::class, 'store'])->name('bookings.store');
 
+Route::get('/CancelBooking/{id}', [BookingController::class, 'showCancelPage'])->name('CancelBooking');
+Route::post('/CancelBooking/{id}', [BookingController::class, 'deleteBooking'])->name('DeleteBooking');
 
 // Mail Route
 Route::get('/bookings.store', function () {
