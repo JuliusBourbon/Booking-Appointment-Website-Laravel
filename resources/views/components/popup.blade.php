@@ -51,4 +51,11 @@
     #iframePopup button:hover {
         background-color: darkred;
     }
+
+    @media (max-width: 768px) {
+        #iframePopup {
+            width: 90vw;
+            height: 100vh;
+        }
+    }
 </style>

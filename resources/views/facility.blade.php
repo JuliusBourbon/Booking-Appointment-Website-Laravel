@@ -8,12 +8,12 @@
     <style>
       /* Global Styles */
       body {
-          font-family: 'Poppins', sans-serif;
-          margin: 0;
-          padding: 0;
-          background-color: #f7f9fc;
-          scroll-behavior: smooth;
-          overflow-x: hidden;
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f7f9fc;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
       }
 
       .content {
@@ -27,43 +27,61 @@
       }
     
       .content h3{
-          font-size: 40px;
-          text-align: center
+        font-size: 40px;
+        text-align: center
       } 
 
       .content p {
-          color: #666;
-          max-width: 600px;
-          margin: 0 auto 20px auto;
-          line-height: 1.6;
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto 20px auto;
+        line-height: 1.6;
       }
 
       .facility {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-wrap: wrap;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
       }
 
       .facility-item {
-          display: flex;
-          align-items: center;
-          gap: 20px;
-          flex-wrap: nowrap;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        flex-wrap: nowrap;
       }
 
       .image-container img {
-          display: block;
-          width: 300px;
-          height: 300px;
-          border-radius: 10px;
-          object-fit: cover;
+        display: block;
+        width: 300px;
+        height: 300px;
+        border-radius: 10px;
+        object-fit: cover;
       }
 
       .facility-item h3 {
-          margin-top: 0;
+        margin-top: 0;
       }
+      
+      @media (max-width: 768px) {
+          .facility-item {
+            flex-direction: column;
+          }
 
+          .image-container img {
+            width: 100%;
+            height: auto;
+          }
+
+          .content {
+            padding: 1rem;
+          }
+
+          .content h3 {
+            font-size: 1.5rem;
+          }
+        }
     </style>
   </head>
   <body>

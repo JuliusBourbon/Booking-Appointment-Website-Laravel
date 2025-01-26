@@ -239,6 +239,35 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
+        @media (max-width: 768px) {
+            .contact-section {
+                flex-direction: column;
+                
+            }
+
+            .contact-info,
+            .contact-form {
+                flex: 1 1 100%;
+                height: auto;
+            }
+
+            .contact-info {
+                margin-bottom: 2rem;
+            }
+
+            .contact-tabs {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .contact-form p {
+                margin: 1rem;
+            }
+
+            form{
+                margin: 0 1rem;
+            }
+        }
+
     </style>
 </head>
 <body>

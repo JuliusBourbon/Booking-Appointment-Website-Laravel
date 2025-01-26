@@ -102,6 +102,17 @@
                 document.getElementById('step2').classList.remove('hidden');
             }, 4000);
         @endif
+
+        window.onload = function() {
+            // Set check-in to today's date
+            var today = new Date().toISOString().split('T')[0];
+            document.getElementById("check_in").value = today;
+
+            // Set check-out to tomorrow's date
+            var tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            document.getElementById("check_out").value = tomorrow.toISOString().split('T')[0];
+        }
     </script>
     
 </body>

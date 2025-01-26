@@ -88,3 +88,11 @@ button {
 .close-btn:hover {
     background-color: #c82333;
 }
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 90%;
+        height: 90%;
+        overflow-y: auto;
+    }
+}

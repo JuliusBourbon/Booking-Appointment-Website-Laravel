@@ -18,4 +18,10 @@
         color: white;
         text-align: center;
     }
+
+    @media screen and (max-width: 600px){
+        .background{
+            padding: 100px 0px;
+        }
+    }
 </style>

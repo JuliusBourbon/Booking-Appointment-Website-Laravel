@@ -15,7 +15,29 @@
     
     <x-bookbutton></x-bookbutton>
 </nav>
-<script>src=" {{ asset('js/home.js') }}"></script>
+{{-- <script>src=" {{ asset('js/home.js') }}"></script> --}}
+
+<script>
+    const navbar = document.querySelector('.navbar');
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > lastScrollY) {
+            // Scroll down - hide navbar
+            navbar.classList.add('hidden');
+        } else {
+            // Scroll up - show navbar
+            navbar.classList.remove('hidden');
+        }
+        lastScrollY = window.scrollY;
+        }
+    );
+    
+    function toggleMenu() {
+        const navbarLinks = document.querySelector('.navbar-links');
+        navbarLinks.classList.toggle('active');
+    }
+</script>
 
 <style>
     /* Base styles */
@@ -37,7 +59,7 @@
     }
 
     .navbar-logo img {
-        height: 6rem;
+        height: 2.5rem;
     }
 
     .navbar-links {
@@ -84,22 +106,24 @@
     }
 
     /* Responsive styles */
-    @media (max-width: 900px) {
+    @media (max-width: 768px) {
         .navbar-links {
             display: none;
             flex-direction: column;
+            justify-content: center;
             gap: 1rem;
             position: absolute;
             top: 4rem;
-            left: 0;
-            right: 0;
             background-color: aliceblue;
-            padding: 1rem 2rem;
+            padding: 1rem 1rem;
             box-shadow: 0 2px 5px rgba(30, 241, 125, 0.1);
         }
 
         .navbar-links.active {
             display: flex;
+            justify-content: center;
+            left: 0px;
+            right: -35px;
         }
 
         .navbar-burger {

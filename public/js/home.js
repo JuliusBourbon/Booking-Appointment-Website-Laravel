@@ -1,35 +1,5 @@
 console.log("Script loaded");
-
-let lastScrollY = window.scrollY;
-const navbar = document.querySelector('.navbar');
-
-
-window.addEventListener('scroll', () => {
-    if (window.scrollY > lastScrollY) {
-        // Scroll down - hide navbar
-        navbar.classList.add('hidden');
-    } else {
-        // Scroll up - show navbar
-        navbar.classList.remove('hidden');
-    }
-    lastScrollY = window.scrollY;
-});
-
-function toggleMenu() {
-    const navbarLinks = document.querySelector('.navbar-links');
-    navbarLinks.classList.toggle('active');
-}
-
-window.onload = function() {
-    // Set check-in to today's date
-    var today = new Date().toISOString().split('T')[0];
-    document.getElementById("check_in").value = today;
-
-    // Set check-out to tomorrow's date
-    var tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    document.getElementById("check_out").value = tomorrow.toISOString().split('T')[0];
-}
+console.log("HAI");
 
 document.addEventListener('DOMContentLoaded', () => {
     // Check if there's a hash in the URL

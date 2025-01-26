@@ -28,10 +28,10 @@
             </div>
         </div>
         <div class="footer-social">
-            <a href="#"><img src="https://logodownload.org/wp-content/uploads/2017/04/instagram-logo.png" alt="Instagram"></a>
-            <a href="#"><img src="https://logodownload.org/wp-content/uploads/2014/09/twitter-logo-1.png" alt="Twitter"></a>
-            <a href="#"><img src="https://logodownload.org/wp-content/uploads/2014/09/facebook-logo-1-2-2048x2048.png" alt="Facebook"></a>
-            <a href="#"><img src="https://cdn-icons-png.flaticon.com/128/5941/5941217.png" alt="Email"></a>
+            <a href="https://www.instagram.com/sbjibo/"><img src="https://logodownload.org/wp-content/uploads/2017/04/instagram-logo.png" alt="Instagram"></a>
+            <a href="https://x.com/juliusbourbonn"><img src="https://logodownload.org/wp-content/uploads/2014/09/twitter-logo-1.png" alt="Twitter"></a>
+            <a href="https://www.facebook.com/groups/programmerhandal"><img src="https://logodownload.org/wp-content/uploads/2014/09/facebook-logo-1-2-2048x2048.png" alt="Facebook"></a>
+            <a href="mailto:naherrrrr@gmail.com"><img src="https://cdn-icons-png.flaticon.com/128/5941/5941217.png" alt="Email"></a>
         </div>
     </footer>
 </div>

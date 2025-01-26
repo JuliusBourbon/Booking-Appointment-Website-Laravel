@@ -103,6 +103,24 @@
             padding: 15px;
             text-align: left;
         }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 1rem;
+            }
+
+            .content h3 {
+                font-size: 30px;
+            }
+
+            .content .desc {
+                max-width: 100%;
+            }
+
+            .offers {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
     </style>
 </head>
 <body>

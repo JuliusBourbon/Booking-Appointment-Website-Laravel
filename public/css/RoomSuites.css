@@ -110,11 +110,39 @@ body {
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
+    .content {
+        padding: 1rem;
+    }
+
     .content h3 {
         font-size: 1.5rem;
     }
 
     .content .desc {
         font-size: 0.9rem;
+    }
+
+    .rooms {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .room .img {
+        height: 150px;
+    }
+
+    .room .size {
+        font-size: 0.9rem;
+    }
+
+    .room .title a {
+        font-size: 1rem;
+    }
+
+    .room p {
+        font-size: 0.8rem;
+    }
+
+    .room .button a {
+        padding: 0.5rem 1rem;
     }
 }

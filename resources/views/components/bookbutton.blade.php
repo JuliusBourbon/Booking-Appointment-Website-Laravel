@@ -10,4 +10,11 @@
         color: white;
         border-radius: 5px;
     }
+
+    @media (max-width: 768px) {
+        .book-button a{
+            padding: 10px 20px;
+            font-size: 0.8rem;
+        }
+    }
 </style>

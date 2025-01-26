@@ -137,6 +137,38 @@
         #iframePopup button:hover {
             background-color: darkred;
         }
+
+        @media (max-width: 768px) {
+            .room-card {
+                flex-direction: column;
+                height: auto;
+            }
+
+            .room-image {
+                width: 100%;
+                height: 25vh;
+            }
+
+            .room-details {
+                padding: 20px;
+            }
+
+            .features {
+                grid-template-columns: repeat(1, 1fr);
+            }
+
+            .content {
+                padding: 1rem;
+            }
+
+            .content h3 {
+                font-size: 1.5rem;
+            }
+
+            .content .desc {
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
