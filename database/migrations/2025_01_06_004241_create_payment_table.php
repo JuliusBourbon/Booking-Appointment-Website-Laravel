@@ -19,7 +19,7 @@ return new class extends Migration
             $table->enum('paymentmethod', ['creditCard', 'bankTransfer']);
             $table->decimal('amount', 8, 2);
 
-            $table->foreign('bookid')->references('bookingid')->on('booking');
+            $table->foreign('bookid')->references('id')->on('bookings')->onDelete('cascade');
         });
     }
 
