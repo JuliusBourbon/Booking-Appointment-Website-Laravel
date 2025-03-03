@@ -7,15 +7,18 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\RoomsuiteController;
+use App\Http\Controllers\AuthController;
 
-// Tes koneksi SQLite
-Route::get('/test-sqlite', function () {
-    try {
-        DB::connection()->getPdo();
-        return "Connected to SQLite: " . DB::connection()->getDatabaseName();
-    } catch (\Exception $e) {
-        return "Could not connect to the database. Error: " . $e->getMessage();
-    }
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/bookings', [BookingController::class, 'create'])->name('bookings');
+    Route::post('/bookings', [BookingController::class, 'store'])->name('bookings.store');
 });
 
 // Halaman utama
@@ -45,9 +48,6 @@ Route::get('/contact', function () {
 
 Route::post('/contact', [EnquiryController::class, 'store'])->name('contact.store');
 
-Route::get('/bookings', [BookingController::class, 'create'])->name('bookings');
-Route::post('/bookings', [BookingController::class, 'store'])->name('bookings.store');
-
 Route::get('/CancelBooking/{id}', [BookingController::class, 'showCancelPage'])->name('CancelBooking');
 Route::post('/CancelBooking/{id}', [BookingController::class, 'deleteBooking'])->name('DeleteBooking');
 
@@ -55,3 +55,5 @@ Route::post('/CancelBooking/{id}', [BookingController::class, 'deleteBooking'])-
 Route::get('/bookings.store', function () {
     return view('mail');
 });
+
+require __DIR__.'/auth.php';
